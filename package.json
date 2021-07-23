@@ -1,0 +1,22 @@
+{
+  "name": "app-lista-tareas",
+  "version": "1.0.0",
+  "description": "App listar tareas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakandakare/app-listar-tareas-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nakandakare/app-listar-tareas-node/issues"
+  },
+  "homepage": "https://github.com/nakandakare/app-listar-tareas-node#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
