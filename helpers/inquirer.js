@@ -1,9 +1,9 @@
 require("colors");
 const inquirer = require("inquirer");
-const questions = require('./questions');
+const questions = require("./questions");
 
 const inquirerMenu = async () => {
-  console.clear();
+  //console.clear();
   console.log("==============================".bgWhite);
   console.log("   Selecciones una opcion".rainbow.bold);
   console.log("==============================\n".bgWhite);
@@ -19,5 +19,5 @@ const pausa = async () => {
 
 module.exports = {
   inquirerMenu,
-  pausa
+  pausa,
 };
