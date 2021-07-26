@@ -1,16 +1,17 @@
 require('colors');
-const { mostrarMenu, pausa } = require('./helpers/mensajes');
-console.clear();
+
+const { inquirerMenu, pausa } = require('./helpers/inquirer');
+//console.clear();
 
 //Funcion para ejecturar nuestra app
 const main = async() => {
-    let option = '';
+    let userOption = '';
     do {
-        //con await evitamos que se ejecute ambas funciones a la vez
-        option = await mostrarMenu();
-        console.log({ option });
+        //con await evitamos que se ejecute ambas funciones (menu y pausa) a la vez
+        const { option } = await inquirerMenu();
+        userOption = option;
         await pausa();
-    } while( option !== '0');
+    } while( userOption !== '0');
 }
 
 main();
