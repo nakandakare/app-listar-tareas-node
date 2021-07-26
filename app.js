@@ -9,6 +9,7 @@ const main = async () => {
   const tareas = new Tareas();
 
   do {
+    //mostramos el menu
     const { option } = await inquirerMenu();
     userOption = option;
 
@@ -20,9 +21,11 @@ const main = async () => {
         break;
       case "2":
         //listar tareas
-        console.log(tareas._listado);
+        console.log(tareas.listadoArr);
         break;
     }
+
+    //pausar menu
     await pausa();
   } while (userOption !== "0");
 };
