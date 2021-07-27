@@ -1,6 +1,6 @@
 require("colors");
 
-const { guardarDB } = require("./helpers/guardarArchivo");
+const { guardarDB, leerDB } = require("./helpers/guardarArchivo");
 const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 
@@ -8,6 +8,11 @@ const Tareas = require("./models/tareas");
 const main = async () => {
   let userOption = "";
   const tareas = new Tareas();
+
+  //leemos el archivo de la bd.
+  const bdData = leerDB();
+  console.log(bdData);
+  await pausa();
 
   do {
     //mostramos el menu
