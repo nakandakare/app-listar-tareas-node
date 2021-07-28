@@ -9,10 +9,11 @@ const main = async () => {
   let userOption = "";
   const tareas = new Tareas();
 
-  //leemos el archivo de la bd.
+  //cargamos el archivo de la bd a las tareas.
   const bdData = leerDB();
-  console.log(bdData);
-  await pausa();
+  if (bdData) {
+    tareas.cargarTareasFromArray(bdData);
+  }
 
   do {
     //mostramos el menu
@@ -27,11 +28,11 @@ const main = async () => {
         break;
       case "2":
         //listar tareas
-        console.log(tareas.listadoArr);
+        tareas.listadoCompleto();
         break;
     }
-    
-    //guardamos al .txt 
+
+    //guardamos al .txt
     guardarDB(tareas.listadoArr);
 
     //pausar menu
