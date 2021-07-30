@@ -1,7 +1,13 @@
 require("colors");
 
 const { guardarDB, leerDB } = require("./helpers/guardarArchivo");
-const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const {
+  inquirerMenu,
+  pausa,
+  leerInput,
+  listadoTareasBorrar,
+  confirmar,
+} = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 
 //Funcion para ejecturar nuestra app
@@ -32,10 +38,18 @@ const main = async () => {
         break;
       case "3":
         tareas.listarPendientesCompletadas(true);
-      break;
+        break;
       case "4":
         tareas.listarPendientesCompletadas(false);
-      break;
+      case "6":
+        const id = await listadoTareasBorrar(tareas.listadoArr);
+        if( id !== '0') {
+          const ok = await confirmar('Borrar esta tarea?');
+          if (ok) {
+            tareas.borrarTarea(id);
+          }
+        } 
+        break;
     }
 
     //guardamos al .txt
