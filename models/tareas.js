@@ -26,12 +26,9 @@ class Tareas {
   }
 
   listadoCompleto() {
-    this.listadoArr.forEach((tarea, index) => {
-      const { completadoEn, desc } = tarea;
-      const numero = index + 1;
-      const estado = completadoEn ? "Completada".green : "Pendiente".red;
-      console.log(`${numero} ${desc} :: ${estado}`);
-    });
+    this.listadoArr.forEach((tarea, i) =>
+      console.log(this.formatearTarea(tarea, i))
+    );
   }
 
   listarPendientesCompletadas(completadas = true) {
