@@ -18,6 +18,13 @@ class Tareas {
     this._listado[tarea.id] = tarea;
   }
 
+  //Implemento esta funcion para reutilizarlo en listadoCompleto() y listarPendientesCompletadas() asi puedo evitar reescribir el codigo
+  formatearTarea(tarea, i) {
+    const indice = `${i + 1}.`.green;
+    const estado = tarea.completadoEn ? "Completada".green : "Pendiente".red;
+    return `${indice} ${tarea.desc} :: ${estado}`;
+  }
+
   listadoCompleto() {
     this.listadoArr.forEach((tarea, index) => {
       const { completadoEn, desc } = tarea;
@@ -25,6 +32,13 @@ class Tareas {
       const estado = completadoEn ? "Completada".green : "Pendiente".red;
       console.log(`${numero} ${desc} :: ${estado}`);
     });
+  }
+
+  listarPendientesCompletadas(completadas = true) {
+    const list = this.listadoArr.filter((tarea) =>
+      completadas ? tarea.completadoEn : !tarea.completadoEn
+    );
+    list.forEach((tarea, i) => console.log(this.formatearTarea(tarea, i)));
   }
 
   get listadoArr() {
