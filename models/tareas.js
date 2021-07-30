@@ -38,6 +38,13 @@ class Tareas {
     list.forEach((tarea, i) => console.log(this.formatearTarea(tarea, i)));
   }
 
+  borrarTarea(id) {
+    if (this._listado[id]) {
+      delete this._listado[id];
+      console.log('Tarea borrada!');
+    }
+  }
+
   get listadoArr() {
     const lista = [];
     Object.keys(this._listado).forEach((key) => {
