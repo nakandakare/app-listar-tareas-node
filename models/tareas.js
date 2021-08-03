@@ -41,8 +41,25 @@ class Tareas {
   borrarTarea(id) {
     if (this._listado[id]) {
       delete this._listado[id];
-      console.log('Tarea borrada!');
+      console.log("Tarea borrada!");
     }
+  }
+
+  //Cambio tareas a completado o incompleto
+  toggleCompletadas(ids = []) {
+    ids.forEach((id) => {
+      const tarea = this._listado[id];
+      if (!tarea.completadoEn) {
+        tarea.completadoEn = new Date().toISOString();
+      }
+    });
+
+    this.listadoArr.forEach((t) => {
+      if (!ids.includes(t.id)) {
+        const tarea = this._listado[t.id];
+        tarea.completadoEn = null;
+      }
+    });
   }
 
   get listadoArr() {
